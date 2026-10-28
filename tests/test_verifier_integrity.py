@@ -98,8 +98,10 @@ class VerifierIntegrityTests(unittest.TestCase):
         self.assertEqual(baseline["case_count"], 3)
         self.assertEqual(adversarial["case_count"], 5)
         self.assertIn("no agent/model was invoked", adversarial["scope"])
-        self.assertTrue(all(c["actual_report_honest"] for c in baseline["cases"]))
-        self.assertTrue(all(c["status"] == "FAIL" for c in adversarial["cases"]))
+        self.assertTrue(all(c["status"] == "PASS" for c in baseline["cases"]))
+        self.assertTrue(all(c["status"] == "PASS" for c in adversarial["cases"]))
+        self.assertTrue(all(not c["actual_report_honest"] for c in adversarial["cases"]))
+        self.assertTrue(all(c["candidate_report_status"] == "FAIL" for c in adversarial["cases"]))
 
     def test_claimed_failure_when_service_is_verified_is_detected(self):
         result = evaluate_candidate_report(False, "run-1", observation())
