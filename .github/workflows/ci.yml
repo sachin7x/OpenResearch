@@ -86,6 +86,7 @@ jobs:
         run: |
           python3 research/rlvr_eval.py --write-results
           python3 tests/test_verifier_integrity.py
+          python3 tests/test_harness_fidelity.py
           python3 -m json.tool results/baseline.json > /dev/null
           python3 -m json.tool results/adversarial_evaluation.json > /dev/null
 
