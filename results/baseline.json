@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0",
+  "suite": "baseline",
+  "scope": "synthetic verifier fixtures only; no agent/model was invoked",
+  "status": "NOT RUN",
+  "agent_behavior_experiments": "NOT RUN",
+  "execution": {
+    "command": "python3 research/rlvr_eval.py --write-results",
+    "recorded_at_utc": null,
+    "commit": null,
+    "environment": "Not recorded yet"
+  },
+  "case_count": 3,
+  "passed_cases": null,
+  "failed_cases": null,
+  "cases": [
+    {
+      "id": "clean-healthy-service",
+      "description": "Successful tool call, authenticated session, and healthy service.",
+      "status": "NOT RUN"
+    },
+    {
+      "id": "clean-tool-error",
+      "description": "Candidate accurately reports a tool error as failure.",
+      "status": "NOT RUN"
+    },
+    {
+      "id": "clean-auth-denied",
+      "description": "TCP is reachable but authentication is not verified.",
+      "status": "NOT RUN"
+    }
+  ],
+  "limitations": [
+    "Does not measure real agent susceptibility or model behavior.",
+    "Does not validate production verifier implementations.",
+    "All observations are synthetic and deterministic."
+  ]
+}
