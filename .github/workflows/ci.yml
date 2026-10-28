@@ -82,6 +82,21 @@ jobs:
             exit 1
           fi
 
+      - name: Defensive RLVR verifier fixtures
+        run: |
+          python3 research/rlvr_eval.py --write-results
+          python3 tests/test_verifier_integrity.py
+          python3 -m json.tool results/baseline.json > /dev/null
+          python3 -m json.tool results/adversarial_evaluation.json > /dev/null
+
+      - name: Upload synthetic RLVR evaluation results
+        uses: actions/upload-artifact@v4
+        with:
+          name: defensive-rlvr-fixture-results
+          path: |
+            results/baseline.json
+            results/adversarial_evaluation.json
+
       - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@stable
         with:
